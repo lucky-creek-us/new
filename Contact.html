@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - WaterPressure Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004d99;
+            --secondary: #00a8e8;
+            --accent: #00c9b7;
+            --light: #f0f8ff;
+            --dark: #1a3c5f;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --radius: 8px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: var(--primary);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        .right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn.ghost:hover {
+            background: rgba(0, 102, 204, 0.1);
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(90deg, var(--danger), #ff6b6b);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .emergency-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Page Content */
+        .page-content {
+            min-height: 60vh;
+            padding: 0 0 60px;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form Styles */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        input, textarea, select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contact-details div:first-child {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Service Areas */
+        .service-areas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Map Placeholder */
+        .map-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-top: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .menu {
+                display: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-areas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <span>24/7 Emergency Service Available: </span>
+            <a href="tel:1-800-WATERPRO">1-800-WATERPRO</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="logo" href="index.html" aria-label="Home">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 5C12.268 5 6 11.268 6 19C6 26.732 12.268 33 20 33C27.732 33 34 26.732 34 19C34 11.268 27.732 5 20 5Z" fill="#0066cc"/>
+                    <path d="M20 10C15.029 10 11 14.029 11 19C11 23.971 15.029 28 20 28C24.971 28 29 23.971 29 19C29 14.029 24.971 10 20 10Z" fill="white"/>
+                    <path d="M20 15C17.2386 15 15 17.2386 15 20C15 22.7614 17.2386 25 20 25C22.7614 25 25 22.7614 25 20C25 17.2386 22.7614 15 20 15Z" fill="#00a8e8"/>
+                    <path d="M20 7L23 12H17L20 7Z" fill="#00c9b7"/>
+                </svg>
+                <span>WaterPressure Pro</span>
+            </a>
+            <div class="menu" data-nav-menu>
+                <a href="index.html">Home</a>
+                <a href="index.html">Services</a>
+                <a href="index.html">Solutions</a>
+                <a href="index.html">About</a>
+                <a href="index.html">Blog</a>
+                <a href="index.html">FAQ</a>
+                <a href="index.html" style="opacity:1;font-weight:800">Contact</a>
+                <a href="#quote">Get Quote</a>
+            </div>
+            <div class="right">
+                <a class="btn ghost" data-nav-toggle>Menu</a>
+                <a class="btn" href="tel:1-800-WATERPRO">Call Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="container">
+            <h1>Contact WaterPressure Pro</h1>
+            <p>Get in touch for consultations, emergency service, or general inquiries</p>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="container">
+            <div class="grid">
+                <div>
+                    <h2>Get In Touch</h2>
+                    <p>We're here to help with all your water pressure and plumbing needs. Choose the contact method that works best for you.</p>
+                    
+                    <div class="card" style="margin-top:30px">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-info">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <div>Phone</div>
+                                <div><a href="tel:1-800-WATERPRO">1-800-WATERPRO</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <div>Email</div>
+                                <div><a href="mailto:info@waterpressurepro.com">info@waterpressurepro.com</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-icon">🏢</div>
+                            <div class="contact-details">
+                                <div>Office</div>
+                                <div>123 Plumbing Way, Suite 100<br>Watertown, WA 98001</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-icon">🕒</div>
+                            <div class="contact-details">
+                                <div>Business Hours</div>
+                                <div>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM<br>Emergency: 24/7</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="margin-top:30px">
+                        <h3>Service Areas</h3>
+                        <p>We serve residential and commercial clients throughout the greater metropolitan area, including:</p>
+                        <div class="service-areas">
+                            <ul>
+                                <li>Watertown</li>
+                                <li>Riverdale</li>
+                                <li>Lakeview</li>
+                                <li>Springfield</li>
+                            </ul>
+                            <ul>
+                                <li>Brookside</li>
+                                <li>Harbor City</li>
+                                <li>Westgate</li>
+                                <li>Northwood</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top:15px">Not sure if we service your area? <a href="tel:1-800-WATERPRO">Call us</a> to confirm!</p>
+                    </div>
+                    
+                    <div class="card" style="margin-top:30px">
+                        <h3>Why Choose WaterPressure Pro</h3>
+                        <ul style="margin-top:15px;color:#666">
+                            <li><strong>Licensed & Insured:</strong> All our technicians are fully certified</li>
+                            <li><strong>Same-Day Service:</strong> We prioritize urgent plumbing issues</li>
+                            <li><strong>Transparent Pricing:</strong> No hidden fees or surprise charges</li>
+                            <li><strong>Quality Guarantee:</strong> We stand behind all our work</li>
+                            <li><strong>Emergency Response:</strong> 24/7 availability for urgent situations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card" id="quote">
+                        <h2>Request a Quote</h2>
+                        <p>Fill out the form below and we'll contact you within 24 hours to discuss your project and provide a detailed estimate.</p>
+                        <form id="quote-form" style="margin-top:20px">
+                            <div class="form-row">
+                                <div>
+                                    <label for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" name="first-name" required placeholder="Your first name">
+                                </div>
+                                <div>
+                                    <label for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" name="last-name" required placeholder="Your last name">
+                                </div>
+                            </div>
+                            
+                            <div style="height:12px"></div>
+                            
+                            <div class="form-row">
+                                <div>
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                </div>
+                                <div>
+                                    <label for="phone">Phone *</label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="Your phone number">
+                                </div>
+                            </div>
+                            
+                            <div style="height:12px"></div>
+                            
+                            <div>
+                                <label for="service-type">Service Type *</label>
+                                <select id="service-type" name="service-type" required>
+                                    <option value="">Select a service</option>
+                                    <option value="pressure-analysis">Water Pressure Analysis</option>
+                                    <option value="pipe-repair">Pipe Repair/Replacement</option>
+                                    <option value="fixture-installation">Fixture Installation</option>
+                                    <option value="water-heater">Water Heater Services</option>
+                                    <option value="emergency">Emergency Service</option>
+                                    <option value="maintenance">Preventive Maintenance</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div style="height:12px"></div>
+                            
+                            <div>
+                                <label for="property-type">Property Type *</label>
+                                <select id="property-type" name="property-type" required>
+                                    <option value="">Select property type</option>
+                                    <option value="residential">Residential Home</option>
+                                    <option value="apartment">Apartment/Condo</option>
+                                    <option value="commercial">Commercial Property</option>
+                                    <option value="multi-unit">Multi-Unit Building</option>
+                                </select>
+                            </div>
+                            
+                            <div style="height:12px"></div>
+                            
+                            <div>
+                                <label for="urgency">Urgency</label>
+                                <select id="urgency" name="urgency">
+                                    <option value="routine">Routine - No immediate need</option>
+                                    <option value="soon">Soon - Within the next 2 weeks</option>
+                                    <option value="urgent">Urgent - Within the next few days</option>
+                                    <option value="emergency">Emergency - Need help now</option>
+                                </select>
+                            </div>
+                            
+                            <div style="height:12px"></div>
+                            
+                            <div>
+                                <label for="description">Project Description *</label>
+                                <textarea id="description" name="description" rows="4" required placeholder="Please describe your water pressure issue or plumbing project..."></textarea>
+                            </div>
+                            
+                            <div style="height:18px"></div>
+                            
+                            <button class="btn" type="submit">Request Quote</button>
+                        </form>
+                    </div>
+                    
+                    <div class="card" style="margin-top:30px">
+                        <h3>Emergency Service</h3>
+                        <p>For urgent plumbing emergencies such as burst pipes, major leaks, or sewer backups, call our 24/7 emergency line immediately.</p>
+                        <div style="text-align:center; margin-top:20px">
+                            <a href="tel:1-800-WATERPRO" class="btn" style="background:var(--danger); border-color:var(--danger);">
+                                🚨 Emergency Call: 1-800-WATERPRO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-placeholder">
+                Interactive Map - Service Area Coverage
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div>© 2025 WaterPressure Pro. All rights reserved.</div>
+            <div style="display:flex;gap:12px;align-items:center">
+                <span class="badge">Licensed & Insured</span>
+                <span class="badge">24/7 Emergency Service</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission handler
+            const quoteForm = document.getElementById('quote-form');
+            if (quoteForm) {
+                quoteForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(quoteForm);
+                    const firstName = formData.get('first-name');
+                    const serviceType = formData.get('service-type');
+                    
+                    // Show success message
+                    alert(`Thank you ${firstName}! Your ${serviceType} quote request has been submitted. We will contact you within 24 hours.`);
+                    
+                    // Reset form
+                    quoteForm.reset();
+                });
+            }
+            
+            // Mobile menu toggle (placeholder functionality)
+            const navToggle = document.querySelector('[data-nav-toggle]');
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    const menu = document.querySelector('[data-nav-menu]');
+                    if (menu) {
+                        if (menu.style.display === 'flex') {
+                            menu.style.display = 'none';
+                        } else {
+                            menu.style.display = 'flex';
+                            menu.style.flexDirection = 'column';
+                            menu.style.position = 'absolute';
+                            menu.style.top = '100%';
+                            menu.style.left = '0';
+                            menu.style.right = '0';
+                            menu.style.background = 'white';
+                            menu.style.padding = '20px';
+                            menu.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

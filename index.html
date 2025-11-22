@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaterPressure Pro - Complete Plumbing Solutions</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004d99;
+            --secondary: #00a8e8;
+            --accent: #00c9b7;
+            --light: #f0f8ff;
+            --dark: #1a3c5f;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --radius: 8px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu a:hover {
+            color: var(--primary);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        .right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn.ghost:hover {
+            background: rgba(0, 102, 204, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 168, 232, 0.1) 0%, rgba(0, 102, 204, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .kudos {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .n {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat .t {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        /* Showcase */
+        .showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tile {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tile:hover {
+            transform: scale(1.03);
+        }
+
+        .tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cap {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Services */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service {
+            padding: 30px;
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .service h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            padding: 30px;
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Form Styles */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        input, textarea, select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(90deg, var(--danger), #ff6b6b);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .emergency-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Page Content */
+        .page-content {
+            min-height: 60vh;
+            padding: 60px 0;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Styles */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            background: white;
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            background: var(--light);
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Blog Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        /* Team Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Solution Styles */
+        .solution-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .solution-tab {
+            padding: 10px 20px;
+            background: white;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .solution-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .solution-content {
+            display: none;
+        }
+
+        .solution-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu {
+                display: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <span>24/7 Emergency Service Available: </span>
+            <a href="tel:1-800-WATERPRO">1-800-WATERPRO</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="logo" href="index.html" aria-label="Home">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 5C12.268 5 6 11.268 6 19C6 26.732 12.268 33 20 33C27.732 33 34 26.732 34 19C34 11.268 27.732 5 20 5Z" fill="#0066cc"/>
+                    <path d="M20 10C15.029 10 11 14.029 11 19C11 23.971 15.029 28 20 28C24.971 28 29 23.971 29 19C29 14.029 24.971 10 20 10Z" fill="white"/>
+                    <path d="M20 15C17.2386 15 15 17.2386 15 20C15 22.7614 17.2386 25 20 25C22.7614 25 25 22.7614 25 20C25 17.2386 22.7614 15 20 15Z" fill="#00a8e8"/>
+                    <path d="M20 7L23 12H17L20 7Z" fill="#00c9b7"/>
+                </svg>
+                <span>WaterPressure Pro</span>
+            </a>
+            <div class="menu" data-nav-menu>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html#quote">Get Quote</a>
+            </div>
+            <div class="right">
+                <a class="btn ghost" data-nav-toggle>Menu</a>
+                <a class="btn" href="tel:1-800-WATERPRO">Call Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page-content">
+            <header class="hero">
+                <div class="container grid">
+                    <div>
+                        <div class="badge">Flow • Pressure • Reliability</div>
+                        <h1>Expert Water Pressure & Pipe System Solutions</h1>
+                        <p>Professional plumbing services specializing in water pressure optimization, pipe installations, and system maintenance for residential and commercial properties.</p>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap">
+                            <a class="btn" href="contact.html">Schedule Service</a>
+                            <a class="btn ghost" href="solutions.html">Our Solutions</a>
+                        </div>
+                        <div class="kudos">
+                            <span class="pill">🔧 Licensed & Insured</span>
+                            <span class="pill">⏱️ Same Day Service</span>
+                            <span class="pill">💧 Pressure Optimization</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="grid-2">
+                            <div class="card">
+                                <div class="stat"><div class="n">24/7</div><div class="t">Emergency Service</div></div>
+                            </div>
+                            <div class="card">
+                                <div class="stat"><div class="n">15+</div><div class="t">Years Experience</div></div>
+                            </div>
+                            <div class="card">
+                                <div class="stat"><div class="n">100%</div><div class="t">Satisfaction</div></div>
+                            </div>
+                            <div class="card">
+                                <div class="stat"><div class="n">500+</div><div class="t">Projects Completed</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="section container">
+                <h2>Our Services</h2>
+                <div class="services">
+                    <div class="service">
+                        <div class="service-icon">💧</div>
+                        <h3>Water Pressure Analysis</h3>
+                        <p>Comprehensive evaluation of your water pressure system to identify issues and optimize performance.</p>
+                        <div class="service-price">From $99</div>
+                        <a href="services.html#pressure" class="btn ghost">Learn More</a>
+                    </div>
+                    <div class="service">
+                        <div class="service-icon">🔧</div>
+                        <h3>Pipe Installation & Repair</h3>
+                        <p>Professional installation, repair, and replacement of residential and commercial piping systems.</p>
+                        <div class="service-price">From $199</div>
+                        <a href="services.html#pipes" class="btn ghost">Learn More</a>
+                    </div>
+                    <div class="service">
+                        <div class="service-icon">🚿</div>
+                        <h3>Fixture Installation</h3>
+                        <p>Expert installation of faucets, showers, toilets, and other water fixtures with pressure optimization.</p>
+                        <div class="service-price">From $149</div>
+                        <a href="services.html#fixtures" class="btn ghost">Learn More</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section container">
+                <h2>Common Water Pressure Problems</h2>
+                <div class="showcase">
+                    <div class="tile">
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #0066cc, #00a8e8);display:flex;align-items:center;justify-content:center;color:white;font-size:4rem;">💧</div>
+                        <div class="cap">Low Water Pressure</div>
+                    </div>
+                    <div class="tile">
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #00a8e8, #00c9b7);display:flex;align-items:center;justify-content:center;color:white;font-size:4rem;">🚫</div>
+                        <div class="cap">Pipe Blockages</div>
+                    </div>
+                    <div class="tile">
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #00c9b7, #0066cc);display:flex;align-items:center;justify-content:center;color:white;font-size:4rem;">⚠️</div>
+                        <div class="cap">Pressure Fluctuations</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section container">
+                <h2>Why Choose WaterPressure Pro</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Thorough Diagnostics</h3>
+                        <p>We use advanced tools to accurately diagnose water pressure issues and provide effective solutions.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Rapid Response</h3>
+                        <p>Emergency services available 24/7 with same-day appointments for urgent plumbing issues.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🛠️</div>
+                        <h3>Quality Workmanship</h3>
+                        <p>Our licensed technicians deliver lasting solutions with premium materials and expert techniques.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <h3>Transparent Pricing</h3>
+                        <p>No hidden fees with upfront pricing and detailed explanations before any work begins.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            "WaterPressure Pro fixed our low water pressure issue that multiple other plumbers couldn't solve. Our showers have never been better!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div style="width:50px;height:50px;border-radius:50%;background:#0066cc;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;margin-right:15px;">JD</div>
+                            <div class="author-info">
+                                <h4>John Davidson</h4>
+                                <p>Homeowner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            "The team was professional, punctual, and solved our restaurant's water pressure problem with minimal disruption to our business."
+                        </div>
+                        <div class="testimonial-author">
+                            <div style="width:50px;height:50px;border-radius:50%;background:#00a8e8;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;margin-right:15px;">MR</div>
+                            <div class="author-info">
+                                <h4>Maria Rodriguez</h4>
+                                <p>Business Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            "After WaterPressure Pro installed our new pipe system, our water bills decreased by 20%. Highly recommend their services!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div style="width:50px;height:50px;border-radius:50%;background:#00c9b7;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;margin-right:15px;">TW</div>
+                            <div class="author-info">
+                                <h4>Thomas Wilson</h4>
+                                <p>Property Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section container">
+                <div class="card">
+                    <h2>Request a Free Consultation</h2>
+                    <p>Contact us today for a comprehensive water pressure assessment or to schedule any of our plumbing services.</p>
+                    <form id="contact-form" style="max-width:720px;margin:18px auto 0;text-align:left">
+                        <div class="form-row">
+                            <div>
+                                <label>Name</label>
+                                <input name="name" required placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label>Phone</label>
+                                <input name="phone" required type="tel" placeholder="Your phone number">
+                            </div>
+                        </div>
+                        <div style="height:12px"></div>
+                        <div class="form-row">
+                            <div>
+                                <label>Email</label>
+                                <input name="email" required type="email" placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label>Service Needed</label>
+                                <select name="service" style="padding:12px 15px;border:1px solid #ddd;border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:1rem;">
+                                    <option value="">Select a service</option>
+                                    <option value="pressure">Water Pressure Analysis</option>
+                                    <option value="pipes">Pipe Installation/Repair</option>
+                                    <option value="fixtures">Fixture Installation</option>
+                                    <option value="emergency">Emergency Service</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="height:12px"></div>
+                        <div>
+                            <label>Message</label>
+                            <textarea name="message" rows="4" placeholder="Describe your water pressure or plumbing issue..."></textarea>
+                        </div>
+                        <div style="height:18px"></div>
+                        <button class="btn" type="submit">Request Consultation</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services-page" class="page-content" style="display:none">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>Our Plumbing Services</h1>
+                    <p>Comprehensive water pressure and pipe system solutions for residential and commercial properties</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="services">
+                    <div class="service" id="pressure">
+                        <div class="service-icon">💧</div>
+                        <h3>Water Pressure Analysis</h3>
+                        <p>Our comprehensive water pressure evaluation identifies issues with your system and provides actionable solutions to optimize performance.</p>
+                        <ul style="text-align:left;margin:20px 0;color:#666">
+                            <li>Pressure testing at multiple points</li>
+                            <li>Flow rate measurement</li>
+                            <li>Pipe condition assessment</li>
+                            <li>Pressure regulator evaluation</li>
+                            <li>Detailed report with recommendations</li>
+                        </ul>
+                        <div class="service-price">From $99</div>
+                        <a href="contact.html" class="btn">Schedule Analysis</a>
+                    </div>
+                    
+                    <div class="service" id="pipes">
+                        <div class="service-icon">🔧</div>
+                        <h3>Pipe Installation & Repair</h3>
+                        <p>Professional installation, repair, and replacement of residential and commercial piping systems using premium materials and techniques.</p>
+                        <ul style="text-align:left;margin:20px 0;color:#666">
+                            <li>Copper, PEX, and PVC pipe installation</li>
+                            <li>Pipe replacement and upgrades</li>
+                            <li>Leak detection and repair</li>
+                            <li>Pipe insulation services</li>
+                            <li>Whole-house repiping</li>
+                        </ul>
+                        <div class="service-price">From $199</div>
+                        <a href="contact.html" class="btn">Get Pipe Service</a>
+                    </div>
+                    
+                    <div class="service" id="fixtures">
+                        <div class="service-icon">🚿</div>
+                        <h3>Fixture Installation</h3>
+                        <p>Expert installation of faucets, showers, toilets, and other water fixtures with pressure optimization for optimal performance.</p>
+                        <ul style="text-align:left;margin:20px 0;color:#666">
+                            <li>Faucet and showerhead installation</li>
+                            <li>Toilet installation and repair</li>
+                            <li>Water heater connections</li>
+                            <li>Garbage disposal installation</li>
+                            <li>Water filtration system setup</li>
+                        </ul>
+                        <div class="service-price">From $149</div>
+                        <a href="contact.html" class="btn">Install Fixtures</a>
+                    </div>
+                    
+                    <div class="service">
+                        <div class="service-icon">🚰</div>
+                        <h3>Water Heater Services</h3>
+                        <p>Installation, repair, and maintenance of tank and tankless water heaters to ensure consistent hot water supply.</p>
+                        <ul style="text-align:left;margin:20px 0;color:#666">
+                            <li>Tank and tankless water heater installation</li>
+                            <li>Water heater repair and maintenance</li>
+                            <li>Flushing and sediment removal</li>
+                            <li>Temperature and pressure valve replacement</li>
+                            <li>Energy efficiency upgrades</li>
+                        </ul>
+                        <div class="service-price">From $299</div>
+                        <a href="contact.html" class="btn">Water Heater Help</a>
+                    </div>
+                    
+                    <div class="service">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Emergency Plumbing</h3>
+                        <p>24/7 emergency response for urgent plumbing issues including leaks, bursts, backups, and no water situations.</p>
+                        <ul style="text-align:left;margin:20px 0;color:#666">
+                            <li>Burst pipe repair</li>
+                            <li>Severe leak containment</li>
+                            <li>Drain and sewer backups</li>
+                            <li>Water shut-off valve issues</li>
+                            <li>No water situations</li>
+                        </ul>
+                        <div class="service-price">Emergency Rates Apply</div>
+                        <a href="tel:1-800-WATERPRO" class="btn">Call Now: 1-800-WATERPRO</a>
+                    </div>
+                    
+                    <div class="service">
+                        <div class="service-icon">🏠</div>
+                        <h3>Preventive Maintenance</h3>
+                        <p>Regular maintenance plans to keep your plumbing system in optimal condition and prevent costly emergencies.</p>
+                        <ul style="text-align:left;margin:20px 0;color:#666">
+                            <li>Comprehensive system inspection</li>
+                            <li>Pipe condition assessment</li>
+                            <li>Water pressure monitoring</li>
+                            <li>Fixture performance check</li>
+                            <li>Water heater maintenance</li>
+                        </ul>
+                        <div class="service-price">From $79/month</div>
+                        <a href="contact.html" class="btn">Learn About Plans</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solutions Page -->
+        <div id="solutions-page" class="page-content" style="display:none">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>Water Pressure Solutions</h1>
+                    <p>Targeted solutions for common water pressure and plumbing problems</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="solution-tabs">
+                    <div class="solution-tab active" data-tab="low-pressure">Low Water Pressure</div>
+                    <div class="solution-tab" data-tab="high-pressure">High Water Pressure</div>
+                    <div class="solution-tab" data-tab="noisy-pipes">Noisy Pipes</div>
+                    <div class="solution-tab" data-tab="discolored-water">Discolored Water</div>
+                    <div class="solution-tab" data-tab="leaking-pipes">Leaking Pipes</div>
+                </div>
+
+                <div class="solution-content active" id="low-pressure">
+                    <div class="card">
+                        <h3>Low Water Pressure Solutions</h3>
+                        <p>If you're experiencing weak water flow from your faucets and showers, we have several solutions to restore proper pressure:</p>
+                        
+                        <div class="grid-2" style="margin-top:30px">
+                            <div class="feature">
+                                <div class="feature-icon">🔍</div>
+                                <h4>Pressure Diagnosis</h4>
+                                <p>Comprehensive testing to identify the root cause of low pressure throughout your property.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🚫</div>
+                                <h4>Clog Removal</h4>
+                                <p>Clearing mineral deposits, sediment, and debris from pipes and fixtures that restrict water flow.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🔄</div>
+                                <h4>Pipe Replacement</h4>
+                                <p>Upgrading corroded or narrow pipes with modern materials that improve water flow.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">⚙️</div>
+                                <h4>Pressure Booster</h4>
+                                <p>Installing pressure booster systems for properties with consistently low municipal water pressure.</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:30px;text-align:center">
+                            <a href="contact.html" class="btn">Get Low Pressure Solution</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-content" id="high-pressure">
+                    <div class="card">
+                        <h3>High Water Pressure Solutions</h3>
+                        <p>Excessive water pressure can damage pipes, fixtures, and appliances. Our solutions protect your plumbing system:</p>
+                        
+                        <div class="grid-2" style="margin-top:30px">
+                            <div class="feature">
+                                <div class="feature-icon">📊</div>
+                                <h4>Pressure Testing</h4>
+                                <p>Accurate measurement of water pressure throughout your property to identify problem areas.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🔧</div>
+                                <h4>Pressure Regulator Installation</h4>
+                                <p>Installing or replacing pressure reducing valves to maintain safe, consistent water pressure.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🛡️</div>
+                                <h4>Expansion Tank Installation</h4>
+                                <p>Adding thermal expansion tanks to water heater systems to manage pressure fluctuations.</p>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🔍</div>
+                                <h4>System Inspection</h4>
+                                <p>Comprehensive evaluation of your plumbing system for damage caused by high pressure.</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:30px;text-align:center">
+                            <a href="contact.html" class="btn">Fix High Pressure Issues</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional solution content would go here -->
+                <div class="solution-content" id="noisy-pipes">
+                    <div class="card">
+                        <h3>Noisy Pipes Solutions</h3>
+                        <p>Banging, rattling, or whistling pipes can indicate serious issues. Our solutions quiet your plumbing system:</p>
+                        <div style="margin-top:30px;text-align:center">
+                            <a href="contact.html" class="btn">Quiet My Pipes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-content" id="discolored-water">
+                    <div class="card">
+                        <h3>Discolored Water Solutions</h3>
+                        <p>Brown, yellow, or rusty water indicates pipe corrosion or sediment issues. We'll restore water clarity:</p>
+                        <div style="margin-top:30px;text-align:center">
+                            <a href="contact.html" class="btn">Fix Water Discoloration</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-content" id="leaking-pipes">
+                    <div class="card">
+                        <h3>Leaking Pipe Solutions</h3>
+                        <p>From minor drips to major leaks, we provide permanent solutions to protect your property from water damage:</p>
+                        <div style="margin-top:30px;text-align:center">
+                            <a href="contact.html" class="btn">Fix Leaking Pipes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page-content" style="display:none">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>About WaterPressure Pro</h1>
+                    <p>Your trusted partner for water pressure and plumbing solutions since 2008</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="grid" style="margin-bottom:60px">
+                    <div>
+                        <h2>Our Story</h2>
+                        <p>WaterPressure Pro was founded in 2008 by master plumber Michael Reynolds, who noticed a gap in the market for specialized water pressure services. While many plumbing companies offered general services, few focused specifically on the complex issues surrounding water pressure optimization.</p>
+                        <p>What started as a one-person operation has grown into a team of 15 licensed technicians serving residential and commercial clients throughout the region. Our commitment to ongoing training and investment in advanced diagnostic equipment ensures we remain at the forefront of water pressure technology.</p>
+                        <p>We believe that proper water pressure is essential not just for comfort, but for the longevity of your plumbing system and water-using appliances.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Our Mission</h3>
+                        <p>To provide expert water pressure solutions that enhance comfort, protect property, and conserve water resources through advanced diagnostics, quality workmanship, and transparent service.</p>
+                        
+                        <h3 style="margin-top:30px">Our Values</h3>
+                        <ul style="margin-top:15px;color:#666">
+                            <li><strong>Expertise:</strong> Continuous training in the latest water pressure technologies</li>
+                            <li><strong>Integrity:</strong> Honest assessments and transparent pricing</li>
+                            <li><strong>Reliability:</strong> 24/7 emergency service and on-time appointments</li>
+                            <li><strong>Quality:</strong> Premium materials and workmanship with lasting results</li>
+                            <li><strong>Conservation:</strong> Water-saving solutions that benefit both customers and the environment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 style="text-align:center;margin-bottom:40px">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-avatar">MR</div>
+                        <h3>Michael Reynolds</h3>
+                        <p>Founder & Master Plumber</p>
+                        <p>20+ years in plumbing, specializing in water pressure systems</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">SG</div>
+                        <h3>Sarah Gonzalez</h3>
+                        <p>Lead Technician</p>
+                        <p>Certified in advanced pipe diagnostics and pressure optimization</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">JW</div>
+                        <h3>James Wilson</h3>
+                        <p>Service Manager</p>
+                        <p>Oversees all projects and ensures quality standards</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">ED</div>
+                        <h3>Emily Davis</h3>
+                        <p>Customer Relations</p>
+                        <p>Your point of contact for scheduling and service questions</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:60px;text-align:center">
+                    <h2>Licenses & Certifications</h2>
+                    <div class="grid-3" style="margin-top:30px">
+                        <div>
+                            <h3>Master Plumber License</h3>
+                            <p>State Certified #MP-88452</p>
+                        </div>
+                        <div>
+                            <h3>Backflow Prevention</h3>
+                            <p>Certified Installer #BPI-2298</p>
+                        </div>
+                        <div>
+                            <h3>Water Efficiency</h3>
+                            <p>EPA WaterSense Partner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Page -->
+        <div id="blog-page" class="page-content" style="display:none">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>WaterPressure Pro Blog</h1>
+                    <p>Expert advice, tips, and insights on water pressure and plumbing maintenance</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-image">💧</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>March 15, 2023</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h3 class="blog-title">5 Signs You Have a Water Pressure Problem</h3>
+                            <p>Learn to identify the subtle indicators of water pressure issues before they become major problems.</p>
+                            <a href="#" class="btn ghost" style="margin-top:15px">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">🚿</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>February 28, 2023</span>
+                                <span>4 min read</span>
+                            </div>
+                            <h3 class="blog-title">How to Choose the Right Showerhead for Your Water Pressure</h3>
+                            <p>Not all showerheads work well with every pressure type. Our guide helps you make the perfect choice.</p>
+                            <a href="#" class="btn ghost" style="margin-top:15px">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">🔧</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>February 10, 2023</span>
+                                <span>7 min read</span>
+                            </div>
+                            <h3 class="blog-title">The Complete Guide to Pipe Materials: Which Is Right for You?</h3>
+                            <p>Compare copper, PEX, PVC and other pipe materials for durability, cost, and water pressure performance.</p>
+                            <a href="#" class="btn ghost" style="margin-top:15px">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">💰</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>January 22, 2023</span>
+                                <span>6 min read</span>
+                            </div>
+                            <h3 class="blog-title">How Proper Water Pressure Can Save You Money</h3>
+                            <p>Discover how optimizing your water pressure reduces bills and extends appliance lifespan.</p>
+                            <a href="#" class="btn ghost" style="margin-top:15px">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">🏠</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>January 5, 2023</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h3 class="blog-title">Seasonal Plumbing Maintenance Checklist</h3>
+                            <p>Protect your pipes year-round with our seasonal maintenance guide for optimal water pressure.</p>
+                            <a href="#" class="btn ghost" style="margin-top:15px">Read More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">⚠️</div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span>December 18, 2022</span>
+                                <span>8 min read</span>
+                            </div>
+                            <h3 class="blog-title">Emergency Plumbing: What to Do Before Help Arrives</h3>
+                            <p>Step-by-step guide to minimize damage during plumbing emergencies while waiting for professional help.</p>
+                            <a href="#" class="btn ghost" style="margin-top:15px">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Page -->
+        <div id="faq-page" class="page-content" style="display:none">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>Frequently Asked Questions</h1>
+                    <p>Get answers to common questions about water pressure and our services</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What causes low water pressure in my home?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Low water pressure can have several causes, including:</p>
+                            <ul>
+                                <li>Mineral buildup in pipes or fixtures</li>
+                                <li>Partially closed main water valve</li>
+                                <li>Problems with the pressure regulator</li>
+                                <li>Corroded plumbing pipes</li>
+                                <li>Municipal water supply issues</li>
+                                <li>Simultaneous water use in multiple locations</li>
+                            </ul>
+                            <p>Our comprehensive pressure analysis can identify the specific cause in your home.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How much does a water pressure analysis cost?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our standard water pressure analysis starts at $99. This includes:</p>
+                            <ul>
+                                <li>Pressure testing at multiple locations</li>
+                                <li>Flow rate measurement</li>
+                                <li>Visual inspection of accessible pipes</li>
+                                <li>Pressure regulator assessment</li>
+                                <li>Detailed report with recommendations</li>
+                            </ul>
+                            <p>If you proceed with any recommended services, the analysis fee is typically applied toward the total cost.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What is the ideal water pressure for a home?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The ideal residential water pressure is between 45-65 psi (pounds per square inch).</p>
+                            <p>Pressures below 40 psi may result in weak flow, while pressures above 80 psi can damage pipes, fixtures, and appliances. Many plumbing codes require pressure reducing valves when municipal pressure exceeds 80 psi.</p>
+                            <p>We can measure your home's pressure and make adjustments if needed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you offer emergency services?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer 24/7 emergency plumbing services for urgent issues including:</p>
+                            <ul>
+                                <li>Burst pipes</li>
+                                <li>Major leaks</li>
+                                <li>Sewer backups</li>
+                                <li>No water situations</li>
+                                <li>Water heater failures</li>
+                            </ul>
+                            <p>Our emergency line is always available: <a href="tel:1-800-WATERPRO">1-800-WATERPRO</a>. Emergency service rates differ from standard business hours pricing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How long does a typical pipe replacement take?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The duration of a pipe replacement project depends on several factors:</p>
+                            <ul>
+                                <li><strong>Single fixture repair:</strong> 2-4 hours</li>
+                                <li><strong>Section repiping:</strong> 1-2 days</li>
+                                <li><strong>Whole-house repiping:</strong> 3-7 days</li>
+                            </ul>
+                            <p>We provide a detailed timeline during our initial assessment and work to minimize disruption to your household.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Are your technicians licensed and insured?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all WaterPressure Pro technicians are licensed, bonded, and insured. We maintain:</p>
+                            <ul>
+                                <li>State Master Plumber licenses</li>
+                                <li>General liability insurance</li>
+                                <li>Workers' compensation coverage</li>
+                                <li>Vehicle insurance</li>
+                            </ul>
+                            <p>We can provide certificate copies for property managers or homeowners' associations upon request.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you offer warranties on your work?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we stand behind our work with comprehensive warranties:</p>
+                            <ul>
+                                <li><strong>Labor warranty:</strong> 2 years on all workmanship</li>
+                                <li><strong>Parts warranty:</strong> Varies by manufacturer (typically 1-10 years)</li>
+                                <li><strong>Pipe installation:</strong> 10-year warranty on materials and workmanship</li>
+                            </ul>
+                            <p>All warranty details are provided in writing with your service agreement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page-content" style="display:none">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>Contact WaterPressure Pro</h1>
+                    <p>Get in touch for consultations, emergency service, or general inquiries</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="grid">
+                    <div>
+                        <h2>Get In Touch</h2>
+                        <p>We're here to help with all your water pressure and plumbing needs. Choose the contact method that works best for you.</p>
+                        
+                        <div class="card" style="margin-top:30px">
+                            <h3>Contact Information</h3>
+                            <div style="display:flex;align-items:center;margin:15px 0">
+                                <div style="font-size:1.5rem;margin-right:15px">📞</div>
+                                <div>
+                                    <div style="font-weight:600">Phone</div>
+                                    <a href="tel:1-800-WATERPRO">1-800-WATERPRO</a>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;margin:15px 0">
+                                <div style="font-size:1.5rem;margin-right:15px">📧</div>
+                                <div>
+                                    <div style="font-weight:600">Email</div>
+                                    <a href="mailto:info@waterpressurepro.com">info@waterpressurepro.com</a>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;margin:15px 0">
+                                <div style="font-size:1.5rem;margin-right:15px">🏢</div>
+                                <div>
+                                    <div style="font-weight:600">Office</div>
+                                    <div>123 Plumbing Way, Suite 100<br>Watertown, WA 98001</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;margin:15px 0">
+                                <div style="font-size:1.5rem;margin-right:15px">🕒</div>
+                                <div>
+                                    <div style="font-weight:600">Business Hours</div>
+                                    <div>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM<br>Emergency: 24/7</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style="margin-top:30px">
+                            <h3>Service Areas</h3>
+                            <p>We serve residential and commercial clients throughout the greater metropolitan area, including:</p>
+                            <div class="grid-2" style="margin-top:15px">
+                                <ul>
+                                    <li>Watertown</li>
+                                    <li>Riverdale</li>
+                                    <li>Lakeview</li>
+                                </ul>
+                                <ul>
+                                    <li>Springfield</li>
+                                    <li>Brookside</li>
+                                    <li>Harbor City</li>
+                                </ul>
+                            </div>
+                            <p style="margin-top:15px">Not sure if we service your area? <a href="tel:1-800-WATERPRO">Call us</a> to confirm!</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="card" id="quote">
+                            <h2>Request a Quote</h2>
+                            <p>Fill out the form below and we'll contact you within 24 hours to discuss your project and provide a detailed estimate.</p>
+                            <form id="quote-form" style="margin-top:20px">
+                                <div class="form-row">
+                                    <div>
+                                        <label>First Name</label>
+                                        <input name="first-name" required placeholder="Your first name">
+                                    </div>
+                                    <div>
+                                        <label>Last Name</label>
+                                        <input name="last-name" required placeholder="Your last name">
+                                    </div>
+                                </div>
+                                <div style="height:12px"></div>
+                                <div class="form-row">
+                                    <div>
+                                        <label>Email</label>
+                                        <input name="email" required type="email" placeholder="your@email.com">
+                                    </div>
+                                    <div>
+                                        <label>Phone</label>
+                                        <input name="phone" required type="tel" placeholder="Your phone number">
+                                    </div>
+                                </div>
+                                <div style="height:12px"></div>
+                                <div>
+                                    <label>Service Type</label>
+                                    <select name="service-type" required>
+                                        <option value="">Select a service</option>
+                                        <option value="pressure-analysis">Water Pressure Analysis</option>
+                                        <option value="pipe-repair">Pipe Repair/Replacement</option>
+                                        <option value="fixture-installation">Fixture Installation</option>
+                                        <option value="water-heater">Water Heater Services</option>
+                                        <option value="emergency">Emergency Service</option>
+                                        <option value="maintenance">Preventive Maintenance</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div style="height:12px"></div>
+                                <div>
+                                    <label>Property Type</label>
+                                    <select name="property-type" required>
+                                        <option value="">Select property type</option>
+                                        <option value="residential">Residential Home</option>
+                                        <option value="apartment">Apartment/Condo</option>
+                                        <option value="commercial">Commercial Property</option>
+                                        <option value="multi-unit">Multi-Unit Building</option>
+                                    </select>
+                                </div>
+                                <div style="height:12px"></div>
+                                <div>
+                                    <label>Project Description</label>
+                                    <textarea name="description" rows="4" placeholder="Please describe your water pressure issue or plumbing project..."></textarea>
+                                </div>
+                                <div style="height:18px"></div>
+                                <button class="btn" type="submit">Request Quote</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div>© 2025 WaterPressure Pro. All rights reserved.</div>
+            <div style="display:flex;gap:12px;align-items:center">
+                <span class="badge">Licensed & Insured</span>
+                <span class="badge">24/7 Emergency Service</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.menu a, .right a[data-nav-toggle]');
+            
+            // Get all page content sections
+            const pages = {
+                'index.html': document.getElementById('home-page'),
+                'services.html': document.getElementById('services-page'),
+                'solutions.html': document.getElementById('solutions-page'),
+                'about.html': document.getElementById('about-page'),
+                'blog.html': document.getElementById('blog-page'),
+                'faq.html': document.getElementById('faq-page'),
+                'contact.html': document.getElementById('contact-page')
+            };
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                Object.values(pages).forEach(page => {
+                    if (page) page.style.display = 'none';
+                });
+                
+                // Show the selected page
+                if (pages[pageId]) {
+                    pages[pageId].style.display = 'block';
+                }
+            }
+            
+            // Set up navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // If it's an internal page link
+                    if (pages[href]) {
+                        e.preventDefault();
+                        
+                        // Update active state in navigation
+                        navLinks.forEach(navLink => {
+                            navLink.style.fontWeight = 'normal';
+                            navLink.style.opacity = '0.8';
+                        });
+                        this.style.fontWeight = '800';
+                        this.style.opacity = '1';
+                        
+                        // Show the page
+                        showPage(href);
+                        
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    }
+                });
+            });
+            
+            // Set up solution tabs
+            const solutionTabs = document.querySelectorAll('.solution-tab');
+            solutionTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    solutionTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    document.querySelectorAll('.solution-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Set up FAQ accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Close all answers
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.classList.remove('active');
+                    });
+                    
+                    // Update all icons
+                    document.querySelectorAll('.faq-question span').forEach(icon => {
+                        icon.textContent = '+';
+                    });
+                    
+                    // If this answer wasn't active, open it
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        this.querySelector('span').textContent = '-';
+                    }
+                });
+            });
+            
+            // Set up form submissions
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your submission! We will contact you soon.');
+                    this.reset();
+                });
+            });
+            
+            // Show home page by default
+            showPage('index.html');
+        });
+    </script>
+     <!-- Popup Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <div class="modal-icon">💧</div>
+            <h2 class="modal-title">Redirect Confirmation</h2>
+            <p class="modal-message">Are you sure you want to leave this page and visit our services page?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-yes" id="confirmYes">Yes</button>
+                <button class="modal-btn modal-btn-no" id="confirmNo">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modal');
+            const openModalBtn = document.getElementById('openModal');
+            const confirmYesBtn = document.getElementById('confirmYes');
+            const confirmNoBtn = document.getElementById('confirmNo');
+
+            // URL to redirect to when user clicks "Yes"
+            const redirectUrl = 'services.html';
+
+            // Open modal
+            openModalBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+            });
+
+            // Close modal when No is clicked
+            confirmNoBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Redirect when Yes is clicked
+            confirmYesBtn.addEventListener('click', function() {
+                window.location.href = redirectUrl;
+            });
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
